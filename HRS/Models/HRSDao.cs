@@ -29,7 +29,7 @@ namespace HRS.Models
         public bool isHotelUserValid(string UserName, string HotelID)
         {
 
-            List<string> users = db.Database.SqlQuery<string>("EXEC hrs_get_hote_user {0},{1}", new Object[] { UserName, HotelID }).ToList();
+            List<string> users = db.Database.SqlQuery<string>("EXEC hrs_get_hotel_user {0},{1}", new Object[] { UserName, HotelID }).ToList();
 
             if (users != null && users.Count() > 0)
             {
