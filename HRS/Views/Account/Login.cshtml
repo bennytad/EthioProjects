@@ -1,0 +1,54 @@
+﻿@model HRS.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Log in Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.HotelID)
+                @Html.TextBoxFor(m => m.HotelID)
+                @Html.ValidationMessageFor(m => m.HotelID)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ol>
+        <input type="submit" value="Log in" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>
+}
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h2>Contact US for an account.</h2>
+    If you currently don't have an HRS license and would like one for your hotel, cntact us today.
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
