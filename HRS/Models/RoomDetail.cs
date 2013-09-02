@@ -12,29 +12,47 @@ namespace HRS.Models
     public class Rooms
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int RoomID { get; set; }
+        public Int64 room_id { get; set; }
         [Display(Name = "Room Number")]
-        public int RoomNumber { get; set; }
+        public string room_number { get; set; }
         [Display(Name = "Hotel ID")]
-        public string HotelID { get; set; }
+        [ForeignKey("Hotels")]
+        public Int64 HotelID { get; set; }
         [Display(Name = "Room Type")]
-        public string RoomType { get; set; }
+        [ForeignKey("RoomTypes")]
+        public Int64 room_type_id { get; set; }
         [Display(Name = "Floor Number")]
-        public string FloorNumber { get; set; }
+        public int floor_level { get; set; }
+        [Display(Name = "Note")]
+        public string note { get; set; }
+
+
+        public virtual Hotels Hotels { get; set; }
+        public virtual RoomTypes RoomTypes { get; set; }
     }
 
     [Table("RoomSchedules")]
     public class RoomSchedules
     {
-        public int RoomID { get; set; }
+        public Int64 RoomID { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int status { get; set; } //0 - checked-out, 1 - booked , 2 - checked-in
     }
 
-    public class RoomDetailModel
+    [Table("RoomTypes")]
+    public class RoomTypes
     {
+        [Key]
+        public Int64 room_type_id { get; set; }
+        [Display(Name = "Room Type")]
+        public string room_type_name { get; set; }
+        [Display(Name = "Hotel ID")]
+        [ForeignKey("Hotels")]
+        public Int64 HotelID { get; set; }
+        [Display(Name="Description")]
+        public string room_description { get; set; }
 
+        public virtual Hotels Hotels { get; set; }
     }
 }

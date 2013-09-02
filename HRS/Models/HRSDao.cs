@@ -8,20 +8,23 @@ using System.Web;
 namespace HRS.Models
 {
 
-    public class UsersContext : DbContext
+    public class DefaultDBContext : DbContext
     {
-        public UsersContext()
+        public DefaultDBContext()
             : base("DefaultConnection")
         {
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<RoomTypeModel> RoomTypes { get; set; }
+        public DbSet<RoomTypes> RoomTypes { get; set; }
+        public DbSet<Rooms> Rooms { get; set; }
+
+        public DbSet<Hotels> Hotels { get; set; }
     }
 
     public class HRSDao
     {
-        private UsersContext db = new UsersContext();
+        private DefaultDBContext db = new DefaultDBContext();
         public HRSDao()
         {
         }
@@ -38,7 +41,7 @@ namespace HRS.Models
             return false;
         }
 
-        public bool isRoomTypeValid(string RoomType, string HotelID)
+        public bool isRoomTypeValid(Int64 RoomType, Int64 HotelID)
         {
             List<int> validation = db.Database.SqlQuery<int>("EXEC hrs_validate_new_room_type {0},{1}", new Object[] { RoomType, HotelID }).ToList();
 

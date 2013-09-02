@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HRS.Models;
 
 namespace HRS.Controllers
 {
     public class HomeController : Controller
     {
+
+        private DefaultDBContext db = new DefaultDBContext();
+
         [Authorize]
         public ActionResult Index()
         {

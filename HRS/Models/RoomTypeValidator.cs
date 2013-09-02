@@ -12,9 +12,9 @@ namespace HRS.Models
         //in this hotel
         public override bool IsValid(object value)
         {
-            RoomTypeModel room_type_model = (RoomTypeModel)value;
+            RoomTypes room_type_model = (RoomTypes)value;
             HRSDao dao = new HRSDao();
-            return dao.isRoomTypeValid(room_type_model.RoomType, room_type_model.HotelID);
+            return dao.isRoomTypeValid(room_type_model.room_type_id, room_type_model.HotelID);
         }
 
         //since we don't want to display why the model validation failed (i.e.

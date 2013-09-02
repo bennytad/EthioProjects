@@ -1,0 +1,68 @@
+﻿@model HRS.Models.Rooms
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Rooms</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_number)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.room_number)
+            @Html.ValidationMessageFor(model => model.room_number)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HotelID, "Hotels")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("HotelID", String.Empty)
+            @Html.ValidationMessageFor(model => model.HotelID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_type_id, "RoomTypes")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("room_type_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.room_type_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.floor_level)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.floor_level)
+            @Html.ValidationMessageFor(model => model.floor_level)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.note)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.note)
+            @Html.ValidationMessageFor(model => model.note)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

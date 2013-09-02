@@ -1,0 +1,50 @@
+﻿@model HRS.Models.Rooms
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Rooms</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.room_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.room_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Hotels.HotelName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Hotels.HotelName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoomTypes.room_type_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomTypes.room_type_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.floor_level)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.floor_level)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.note)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.note)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.room_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,29 @@
+﻿@model HRS.Models.Hotels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Hotels</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.HotelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

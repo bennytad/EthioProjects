@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HRS.Models.Hotels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HotelID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HotelID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HotelID })
+        </td>
+    </tr>
+}
+
+</table>
