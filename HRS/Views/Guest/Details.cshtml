@@ -1,0 +1,64 @@
+﻿@model HRS.Models.Guest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Guest</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.first_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.first_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.last_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.last_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.street_address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.street_address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.city)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.city)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.country)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.country)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.national_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.national_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nationality)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nationality)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

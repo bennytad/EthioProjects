@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
@@ -173,7 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CustomerModels.cs" />
+    <Compile Include="Models\Guest.cs" />
     <Compile Include="Models\Hotels.cs" />
     <Compile Include="Models\HotelUserValidator.cs" />
     <Compile Include="Models\HRSDao.cs" />
@@ -319,6 +320,11 @@
     <Content Include="Views\Rooms\Create.cshtml" />
     <Content Include="Views\Rooms\Edit.cshtml" />
     <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Guest\Index.cshtml" />
+    <Content Include="Views\Guest\Details.cshtml" />
+    <Content Include="Views\Guest\Create.cshtml" />
+    <Content Include="Views\Guest\Edit.cshtml" />
+    <Content Include="Views\Guest\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

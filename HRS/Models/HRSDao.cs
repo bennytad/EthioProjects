@@ -18,6 +18,7 @@ namespace HRS.Models
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<RoomTypes> RoomTypes { get; set; }
         public DbSet<Rooms> Rooms { get; set; }
+        public DbSet<Guest> Guests { get; set; }
 
         public DbSet<Hotels> Hotels { get; set; }
 
