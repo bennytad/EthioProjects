@@ -16,7 +16,7 @@ namespace HRS.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-        public string HotelID { get; set; }
+        public Int64 HotelID { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -25,7 +25,7 @@ namespace HRS.Models
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
-        public string HotelID { get; set; }
+        public Int64 HotelID { get; set; }
 
         public string ExternalLoginData { get; set; }
     }
@@ -63,7 +63,7 @@ namespace HRS.Models
 
         [Required]
         [Display(Name = "Hotel ID")]
-        public string HotelID { get; set; }
+        public Int64 HotelID { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
@@ -88,7 +88,7 @@ namespace HRS.Models
 
         [Required]
         [Display(Name = "Hotel ID")]
-        public string HotelID { get; set; }
+        public Int64 HotelID { get; set; }
     }
 
     public class ExternalLogin

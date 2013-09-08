@@ -17,13 +17,6 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Hotels.HotelName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Hotels.HotelName)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.room_description)
     </div>
     <div class="display-field">
@@ -31,6 +24,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.room_type_id }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

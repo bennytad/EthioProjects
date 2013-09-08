@@ -13,7 +13,6 @@ namespace HRS.Models
     public class Hotels
     {
         [Key]
-        [ScaffoldColumn(true)]
         public Int64 HotelID { get; set; }
         [Display(Name = "Hotel Name")]
         public string HotelName { get; set; }

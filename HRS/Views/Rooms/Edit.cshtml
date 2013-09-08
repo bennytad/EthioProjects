@@ -24,7 +24,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.HotelID, "Hotels")
+            @Html.LabelFor(model => model.HotelID, "RoomTypes")
         </div>
         <div class="editor-field">
             @Html.DropDownList("HotelID", String.Empty)
@@ -32,10 +32,10 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.room_type_id, "RoomTypes")
+            @Html.LabelFor(model => model.room_type_id)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("room_type_id", String.Empty)
+            @Html.EditorFor(model => model.room_type_id)
             @Html.ValidationMessageFor(model => model.room_type_id)
         </div>
 

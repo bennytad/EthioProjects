@@ -37,6 +37,8 @@ namespace HRS.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                //store the user hotel in session
+                System.Web.HttpContext.Current.Session.Add("UserHotelID", model.HotelID);
                 return RedirectToLocal(returnUrl);
             }
 
@@ -54,6 +56,8 @@ namespace HRS.Controllers
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
+
+            System.Web.HttpContext.Current.Session.Add("UserHotelID", -1);
 
             return RedirectToAction("Login", "Account");
         }
@@ -82,6 +86,7 @@ namespace HRS.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { model.HotelID }, false);
                     WebSecurity.Login(model.UserName, model.Password);
+                    System.Web.HttpContext.Current.Session.Add("UserHotelID", model.HotelID);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

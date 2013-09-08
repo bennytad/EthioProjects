@@ -11,23 +11,24 @@ namespace HRS.Models
     [Table("Rooms")]
     public class Rooms
     {
-        [Key]
+        [Key, Column(Order = 0),DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public Int64 room_id { get; set; }
+
         [Display(Name = "Room Number")]
         public string room_number { get; set; }
-        [Display(Name = "Hotel ID")]
-        [ForeignKey("Hotels")]
+
+        [Display(Name = "Hotel ID"),ForeignKey("RoomTypes"),Column(Order=2)]
         public Int64 HotelID { get; set; }
-        [Display(Name = "Room Type")]
-        [ForeignKey("RoomTypes")]
+
+        [Display(Name = "Room Type"), ForeignKey("RoomTypes"),Column(Order = 1)]
         public Int64 room_type_id { get; set; }
+
         [Display(Name = "Floor Number")]
         public int floor_level { get; set; }
+
         [Display(Name = "Note")]
         public string note { get; set; }
 
-
-        public virtual Hotels Hotels { get; set; }
         public virtual RoomTypes RoomTypes { get; set; }
     }
 
@@ -43,13 +44,15 @@ namespace HRS.Models
     [Table("RoomTypes")]
     public class RoomTypes
     {
-        [Key]
+        [Key, Column(Order = 0), DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public Int64 room_type_id { get; set; }
+
         [Display(Name = "Room Type")]
         public string room_type_name { get; set; }
-        [Display(Name = "Hotel ID")]
-        [ForeignKey("Hotels")]
+
+        [Key, Column(Order = 1), Display(Name = "Hotel ID"), ForeignKey("Hotels")]
         public Int64 HotelID { get; set; }
+
         [Display(Name="Description")]
         public string room_description { get; set; }
 

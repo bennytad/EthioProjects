@@ -9,21 +9,24 @@ using HRS.Models;
 
 namespace HRS.Controllers
 {
-    public class RoomTypesController : Controller
+    public class RoomTypeController : Controller
     {
         private DefaultDBContext db = new DefaultDBContext();
 
         //
-        // GET: /RoomTypes/
+        // GET: /RoomType/
 
         public ActionResult Index()
         {
-            var roomtypes = db.RoomTypes.Include(r => r.Hotels);
+            Object o = System.Web.HttpContext.Current.Session["UserHotelID"];
+            Int64 HotelID = o == null ? 0 : (Int64)o;
+            //var roomtypes = db.RoomTypes.Include(r => r.Hotels);
+            var roomtypes = db.RoomTypes.Where(p => p.HotelID == HotelID).Include(r => r.Hotels);
             return View(roomtypes.ToList());
         }
 
         //
-        // GET: /RoomTypes/Details/5
+        // GET: /RoomType/Details/5
 
         public ActionResult Details(long id = 0)
         {
@@ -36,7 +39,7 @@ namespace HRS.Controllers
         }
 
         //
-        // GET: /RoomTypes/Create
+        // GET: /RoomType/Create
 
         public ActionResult Create()
         {
@@ -45,7 +48,7 @@ namespace HRS.Controllers
         }
 
         //
-        // POST: /RoomTypes/Create
+        // POST: /RoomType/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,6 +56,9 @@ namespace HRS.Controllers
         {
             if (ModelState.IsValid)
             {
+            Int64 HotelID =
+                (Int64)System.Web.HttpContext.Current.Session["UserHotelID"];
+                roomtypes.HotelID = HotelID;
                 db.RoomTypes.Add(roomtypes);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,7 +69,7 @@ namespace HRS.Controllers
         }
 
         //
-        // GET: /RoomTypes/Edit/5
+        // GET: /RoomType/Edit/5
 
         public ActionResult Edit(long id = 0)
         {
@@ -77,7 +83,7 @@ namespace HRS.Controllers
         }
 
         //
-        // POST: /RoomTypes/Edit/5
+        // POST: /RoomType/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -94,7 +100,7 @@ namespace HRS.Controllers
         }
 
         //
-        // GET: /RoomTypes/Delete/5
+        // GET: /RoomType/Delete/5
 
         public ActionResult Delete(long id = 0)
         {
@@ -107,7 +113,7 @@ namespace HRS.Controllers
         }
 
         //
-        // POST: /RoomTypes/Delete/5
+        // POST: /RoomType/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

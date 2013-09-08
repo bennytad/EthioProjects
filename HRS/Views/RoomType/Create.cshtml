@@ -1,10 +1,10 @@
 ﻿@model HRS.Models.RoomTypes
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -13,22 +13,12 @@
     <fieldset>
         <legend>RoomTypes</legend>
 
-        @Html.HiddenFor(model => model.room_type_id)
-
         <div class="editor-label">
             @Html.LabelFor(model => model.room_type_name)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.room_type_name)
             @Html.ValidationMessageFor(model => model.room_type_name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.HotelID, "Hotels")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("HotelID", String.Empty)
-            @Html.ValidationMessageFor(model => model.HotelID)
         </div>
 
         <div class="editor-label">
@@ -40,7 +30,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Create" />
         </p>
     </fieldset>
 }

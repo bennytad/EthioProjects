@@ -20,6 +20,8 @@ namespace HRS.Models
         public DbSet<Rooms> Rooms { get; set; }
 
         public DbSet<Hotels> Hotels { get; set; }
+
+        public DbSet<Reservation> Reservations { get; set; }
     }
 
     public class HRSDao
@@ -29,7 +31,7 @@ namespace HRS.Models
         {
         }
 
-        public bool isHotelUserValid(string UserName, string HotelID)
+        public bool isHotelUserValid(string UserName, Int64 HotelID)
         {
 
             List<string> users = db.Database.SqlQuery<string>("EXEC hrs_get_hotel_user {0},{1}", new Object[] { UserName, HotelID }).ToList();

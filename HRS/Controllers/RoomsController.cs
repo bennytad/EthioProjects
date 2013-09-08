@@ -18,7 +18,9 @@ namespace HRS.Controllers
 
         public ActionResult Index()
         {
-            var rooms = db.Rooms.Include(r => r.Hotels).Include(r => r.RoomTypes);
+            Object o = System.Web.HttpContext.Current.Session["UserHotelID"];
+            Int64 HotelID = o == null ? 0 : (Int64)o;
+            var rooms = db.Rooms.Where(p => p.HotelID == HotelID).Include(r => r.RoomTypes);
             return View(rooms.ToList());
         }
 
@@ -40,8 +42,11 @@ namespace HRS.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.HotelID = new SelectList(db.Hotels, "HotelID", "HotelName");
-            ViewBag.room_type_id = new SelectList(db.RoomTypes, "room_type_id", "room_type_name");
+            Object o = System.Web.HttpContext.Current.Session["UserHotelID"];
+            Int64 HotelID = o == null ? 0 : (Int64)o;
+            var roomtypes = db.RoomTypes.Where(p => p.HotelID == HotelID).Include(r => r.Hotels);
+
+            ViewBag.room_type_id = new SelectList(roomtypes, "room_type_id", "room_type_name");
             return View();
         }
 
@@ -54,13 +59,15 @@ namespace HRS.Controllers
         {
             if (ModelState.IsValid)
             {
+                Int64 HotelID =
+                    (Int64)System.Web.HttpContext.Current.Session["UserHotelID"];
+                rooms.HotelID = HotelID;
                 db.Rooms.Add(rooms);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.HotelID = new SelectList(db.Hotels, "HotelID", "HotelName", rooms.HotelID);
-            ViewBag.room_type_id = new SelectList(db.RoomTypes, "room_type_id", "room_type_name", rooms.room_type_id);
+            ViewBag.HotelID = new SelectList(db.RoomTypes, "room_type_id", "room_type_name", rooms.HotelID);
             return View(rooms);
         }
 
@@ -74,8 +81,7 @@ namespace HRS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HotelID = new SelectList(db.Hotels, "HotelID", "HotelName", rooms.HotelID);
-            ViewBag.room_type_id = new SelectList(db.RoomTypes, "room_type_id", "room_type_name", rooms.room_type_id);
+            ViewBag.HotelID = new SelectList(db.RoomTypes, "room_type_id", "room_type_name", rooms.HotelID);
             return View(rooms);
         }
 
@@ -92,8 +98,7 @@ namespace HRS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HotelID = new SelectList(db.Hotels, "HotelID", "HotelName", rooms.HotelID);
-            ViewBag.room_type_id = new SelectList(db.RoomTypes, "room_type_id", "room_type_name", rooms.room_type_id);
+            ViewBag.HotelID = new SelectList(db.RoomTypes, "room_type_id", "room_type_name", rooms.HotelID);
             return View(rooms);
         }
 
